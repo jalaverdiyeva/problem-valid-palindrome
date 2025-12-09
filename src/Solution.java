@@ -1,15 +1,19 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+class Solution {
+    public boolean isPalindrome(String s){
+        int left=0, right=s.length()-1;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        while(left<right){
+            //skip non-alphanumeric characters from left
+            while (left<right && !Character.isLetterOrDigit(s.charAt(left))) { left++; }
+
+            //skip non-alphanumeric characters from right
+            while (left<right && !Character.isLetterOrDigit(s.charAt(right))) { right--; }
+
+            //compare characters (convert to lowercase)
+            if (Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {
+                return false; }
+            left++; right--;
         }
+        return true;
     }
 }
